@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-16"?>
+<DevTrackerData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SolutionTotalEditTime="PT0S" SolutionTotalViewTime="PT11.8129898S" SolutionTotalDebugTime="PT0S">
+  <FileVersion>
+    <Major>1</Major>
+    <Minor>0</Minor>
+  </FileVersion>
+  <SolutionFolder>D:\test\ColliderTest\Relay</SolutionFolder>
+  <SolutionCreattionDate>2021-04-24T00:59:42.4804188+02:00</SolutionCreattionDate>
+  <ProjectsCreatedDateList>
+    <ProjectCreated>
+      <ProjectName>D:\test\ColliderTest\Relay\MLAPI.Relay\MLAPI.Relay.csproj</ProjectName>
+      <CreatedDate>2021-04-24T00:59:27.5211848+02:00</CreatedDate>
+    </ProjectCreated>
+    <ProjectCreated>
+      <ProjectName>D:\test\ColliderTest\Relay\MLAPI.Relay.Transports\MLAPI.Relay.Transports.csproj</ProjectName>
+      <CreatedDate>2021-04-24T00:59:27.5011754+02:00</CreatedDate>
+    </ProjectCreated>
+  </ProjectsCreatedDateList>
+  <SessionTimeList />
+  <LastSessionTimeList>
+    <DevTrackerDataItem ViewActiveTime="PT11.8489981S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>D:\test\ColliderTest\Relay\MLAPI.Relay\Program.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>D:\test\ColliderTest\Relay\MLAPI.Relay\MLAPI.Relay.csproj</ProjectName>
+      <CreatedDate>2021-04-24T01:02:43.0362664+02:00</CreatedDate>
+      <ViewedBy>Subtixx</ViewedBy>
+    </DevTrackerDataItem>
+  </LastSessionTimeList>
+  <TotalTimeList>
+    <DevTrackerDataItem ViewActiveTime="PT11.8139906S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>D:\test\ColliderTest\Relay\MLAPI.Relay\Program.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>D:\test\ColliderTest\Relay\MLAPI.Relay\MLAPI.Relay.csproj</ProjectName>
+      <CreatedDate>2021-04-24T01:02:43.0362664+02:00</CreatedDate>
+      <ViewedBy>Subtixx</ViewedBy>
+    </DevTrackerDataItem>
+  </TotalTimeList>
+  <HistoryTimeList>
+    <DevTrackerDataItem ViewActiveTime="PT11.8139906S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>D:\test\ColliderTest\Relay\MLAPI.Relay\Program.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>D:\test\ColliderTest\Relay\MLAPI.Relay\MLAPI.Relay.csproj</ProjectName>
+      <CreatedDate>2021-04-24T01:02:43.0362664+02:00</CreatedDate>
+      <ViewedBy>Subtixx</ViewedBy>
+    </DevTrackerDataItem>
+  </HistoryTimeList>
+</DevTrackerData>
