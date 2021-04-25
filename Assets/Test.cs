@@ -51,6 +51,7 @@ public class Test : MonoBehaviour
 
     static void StartButtons()
     {
+    NetworkManager.Singleton.NetworkConfig.ConnectionData
         NetworkManager.Singleton.ConnectionApprovalCallback += OnConnectionApprovalCallback;
         NetworkManager.Singleton.OnServerStarted += OnServerStarted;
         NetworkManager.Singleton.OnClientConnectedCallback += OnOnClientConnectedCallback;
@@ -131,6 +132,27 @@ public class Test : MonoBehaviour
     private static void NetworkTransportOnOnTransportEvent(NetworkEvent type, ulong clientid, NetworkChannel networkchannel, ArraySegment<byte> payload, float receivetime)
     {
         Debug.Log("YES");
+    }
+
+    private static void JoinRoom(string roomNameToJoin)
+    {
+        var transport = NetworkManager.Singleton.GetComponent<UNetTransport>();
+        
+        var payloadBuffer = new byte[46];
+
+        using (var ms = new MemoryStream(payloadBuffer))
+        {
+            using (var bw = new BinaryWriter(ms))
+            {
+                bw.Write(int.Parse("FF03FFFF", System.Globalization.NumberStyles.HexNumber));
+                
+                bw.Write(roomNameToJoin);
+            }
+        }
+            
+        //var payload = new ArraySegment<byte>(payloadBuffer, 0, 4);
+        var payload = new ArraySegment<byte>(payloadBuffer, 0, 37);
+        transport.Send(0, payload, NetworkChannel.Internal);
     }
 
     private static void SendRoomName()

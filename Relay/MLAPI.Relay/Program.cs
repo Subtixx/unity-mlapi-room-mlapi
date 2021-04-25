@@ -468,6 +468,41 @@ namespace MLAPI.Relay
                                         Transport.Send(sendPayload, channelId, connectionId);
                                     }
 
+                                    // Packet ID = 3 = JoinRoom
+                                    if (payload.Array[2] == 03 && payload.Array[3] == 255)
+                                    {
+                                        using (var ms = new MemoryStream(payload.Array))
+                                        {
+                                            using (var br = new BinaryReader(ms))
+                                            {
+                                                br.ReadInt32();
+                                                var roomName = br.ReadString();
+                                                Console.WriteLine($"Client {Transport.GetEndPoint(connectionId).Address} is trying to join room: {roomName}");
+                                                
+                                                foreach (var room in Rooms)
+                                                {
+                                                    if (room.RoomName == roomName)
+                                                    {
+                                                        Console.WriteLine($"Found room for client {Transport.GetEndPoint(connectionId).Address}!");
+
+                                                        // Create a client for them
+                                                        var client = new Client()
+                                                        {
+                                                            ConnectionId = connectionId,
+                                                            IsServer = false,
+                                                            ConnectTime = DateTime.UtcNow,
+                                                            OutgoingBytes = 0
+                                                        };
+
+                                                        // Handle the connect
+                                                        room.HandleClientConnect(client);
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+
                                     break;
                                 }
 
