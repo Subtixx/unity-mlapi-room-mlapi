@@ -7,22 +7,60 @@ on:
     branches: [ main ]
 
 jobs:
+  release:
+    name: Release
+    strategy:
+      matrix:
+        kind: ['linux', 'windows']
+        include:
+          - kind: linux
+            os: ubuntu-latest
+            target: linux-x64
+          - kind: windows
+            os: windows-latest
+            target: win-x64
+    runs-on: ${{ matrix.os }}
+    
   build:
 
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet: [ '3.0', '3.1.x', '5.0.x' ]
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+    - name: Setup dotnet ${{ matrix.dotnet-version }}
+      uses: actions/setup-dotnet@v1.7.2
       with:
-        dotnet-version: 5.0.x
+        dotnet-version: ${{ matrix.dotnet-version }}
+    - name: Display dotnet version
+      run: dotnet --version
     - name: Restore dependencies
       run: dotnet restore
       working-directory: Relay/
     - name: Build
-      run: dotnet build --no-restore
-      working-directory: Relay/
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
-      working-directory: Relay/
+      shell: bash
+      run: |
+        # Define some variables for things we need
+        tag=$(git describe --tags --abbrev=0)
+         release_name="App-$tag-${{ matrix.target }}"
+
+        # Build everything
+        dotnet publish Relay/MLAPI.Relay.sln --framework netcoreapp${{ matrix.dotnet-version }} --runtime "${{ matrix.target }}" -c Release -o "$release_name"
+
+        # Pack files
+        if [ "${{ matrix.target }}" == "win-x64" ]; then
+          7z a -tzip "${release_name}.zip" "./${release_name}/*"
+        else
+          tar czvf "${release_name}.tar.gz" "$release_name"
+        fi
+
+        # Delete output directory
+        rm -r "$release_name"
+    - name: Publish
+      uses: softprops/action-gh-release@v1
+      with:
+        files: "MLAPI*"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
