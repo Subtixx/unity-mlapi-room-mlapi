@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net35;net45;netstandard2.0;netcoreapp2.1</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
+  <Import Project="..\MLAPI.Puncher.Shared\MLAPI.Puncher.Shared.projitems" Label="Shared" Condition="Exists('..\MLAPI.Puncher.Shared\MLAPI.Puncher.Shared.projitems')" />
+</Project>
